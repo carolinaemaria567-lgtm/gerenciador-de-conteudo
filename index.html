@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hair Beauty | Painel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Hair Beauty ♡</h1>
+    <p>Gerencie seus produtos com carinho.</p>
+</header>
+
+<nav>
+    <button onclick="mostrar('inicio')">Início</button>
+    <button onclick="mostrar('cadastro')">Produtos</button>
+    <button onclick="mostrar('relatorios')">Relatórios</button>
+</nav>
+
+<main>
+    <section id="inicio" class="pagina">
+        <h2>Olá, administradora! </h2>
+        <div class="indicadores">
+            <div class="card">Produtos <strong id="total">0</strong></div>
+            <div class="card">Unidades <strong id="unidades">0</strong></div>
+            <div class="card">Valor em estoque <strong id="valor">R$ 0,00</strong></div>
+            <div class="card">Estoque baixo <strong id="baixo">0</strong></div>
+        </div>
+        <h3>Produtos que precisam de atenção</h3>
+        <ul id="alertas"></ul>
+    </section>
+
+    <section id="cadastro" class="pagina escondido">
+        <h2>Gerenciar produtos ♡</h2>
+
+        <form id="formulario">
+            <input type="hidden" id="id">
+            <input id="nome" placeholder="Nome do produto" required>
+            <input id="marca" placeholder="Marca" required>
+
+            <select id="categoria" required>
+                <option value="">Escolha a categoria</option>
+                <option>Shampoo</option>
+                <option>Condicionador</option>
+                <option>Máscara capilar</option>
+                <option>Óleo capilar</option>
+                <option>Finalizador</option>
+                <option>Outro</option>
+            </select>
+
+            <input id="preco" type="number" min="0" step="0.01"
+                placeholder="Preço (R$)" required>
+            <input id="estoque" type="number" min="0" step="1"
+                placeholder="Quantidade em estoque" required>
+            <textarea id="descricao" placeholder="Descrição do produto"></textarea>
+
+            <button type="submit">Salvar produto</button>
+            <button type="button" onclick="limpar()">Limpar campos</button>
+        </form>
+
+        <input id="busca" placeholder="Pesquisar nome ou marca..." oninput="listar()">
+
+        <select id="filtro" onchange="listar()">
+            <option value="">Todas as categorias</option>
+            <option>Shampoo</option>
+            <option>Condicionador</option>
+            <option>Máscara capilar</option>
+            <option>Óleo capilar</option>
+            <option>Finalizador</option>
+            <option>Outro</option>
+        </select>
+
+        <div id="lista"></div>
+    </section>
+
+    <section id="relatorios" class="pagina escondido">
+        <h2>Relatórios da loja ♡</h2>
+        <div class="card">
+            <p>Quantidade de produtos: <strong id="rProdutos">0</strong></p>
+            <p>Unidades disponíveis: <strong id="rUnidades">0</strong></p>
+            <p>Valor estimado do estoque: <strong id="rValor">R$ 0,00</strong></p>
+            <button onclick="exportar()">Exportar relatório CSV</button>
+        </div>
+    </section>
+</main>
+
+<footer>Hair Beauty ♡ | Beleza em cada detalhe</footer>
+<script src="script.js"></script>
+</body>
+</html>
